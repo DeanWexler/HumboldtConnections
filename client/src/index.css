@@ -3,53 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --background: 210 11% 98%; /* #F5F7FA */
-  --foreground: 222 84% 5%; /* #0D1117 */
-  --muted: 210 40% 95%; /* #E8EDF4 */
-  --muted-foreground: 215 13% 50%; /* #6B7280 */
-  --popover: 0 0% 100%; /* #FFFFFF */
-  --popover-foreground: 222 84% 5%; /* #0D1117 */
-  --card: 0 0% 100%; /* #FFFFFF */
-  --card-foreground: 222 84% 5%; /* #0D1117 */
-  --border: 214 32% 91%; /* #D1D5DB */
-  --input: 214 32% 91%; /* #D1D5DB */
-  --primary: 221 83% 53%; /* #2563EB */
-  --primary-foreground: 210 40% 98%; /* #F8FAFC */
-  --secondary: 210 40% 95%; /* #E8EDF4 */
-  --secondary-foreground: 222 84% 5%; /* #0D1117 */
-  --accent: 45 93% 47%; /* #F59E0B */
-  --accent-foreground: 222 84% 5%; /* #0D1117 */
-  --destructive: 0 84% 60%; /* #EF4444 */
-  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
-  --ring: 221 83% 53%; /* #2563EB */
-  --radius: 0.5rem;
-  --chart-1: 221 83% 53%; /* #2563EB */
-  --chart-2: 45 93% 47%; /* #F59E0B */
-  --chart-3: 142 71% 45%; /* #10B981 */
-  --chart-4: 262 83% 58%; /* #8B5CF6 */
-  --chart-5: 346 77% 49%; /* #EF4444 */
+  /* Romantic Rose Theme - Light Mode */
+  --background: 350 30% 98%; /* Soft rose white */
+  --foreground: 345 25% 15%; /* Deep burgundy text */
+  --muted: 350 15% 95%; /* Very light rose */
+  --muted-foreground: 345 15% 40%; /* Muted burgundy */
+  --popover: 0 0% 100%; /* Pure white */
+  --popover-foreground: 345 25% 15%; /* Deep burgundy */
+  --card: 0 0% 100%; /* Pure white cards */
+  --card-foreground: 345 25% 15%; /* Deep burgundy */
+  --border: 350 25% 85%; /* Soft rose border */
+  --input: 350 25% 90%; /* Light rose input */
+  --primary: 350 70% 55%; /* Beautiful rose pink */
+  --primary-foreground: 0 0% 100%; /* White text on rose */
+  --secondary: 350 20% 92%; /* Light rose background */
+  --secondary-foreground: 345 25% 25%; /* Dark burgundy */
+  --accent: 355 65% 90%; /* Soft romantic accent */
+  --accent-foreground: 345 25% 15%; /* Deep burgundy */
+  --destructive: 0 75% 55%; /* Rose red */
+  --destructive-foreground: 0 0% 100%; /* White */
+  --ring: 350 70% 55%; /* Rose ring */
+  --radius: 0.75rem; /* Softer corners */
+  --chart-1: 350 70% 55%; /* Rose */
+  --chart-2: 340 60% 60%; /* Pink */
+  --chart-3: 330 65% 65%; /* Light pink */
+  --chart-4: 320 70% 70%; /* Blush */
+  --chart-5: 310 75% 75%; /* Soft pink */
+  
+  /* Custom romantic colors */
+  --rose-50: 350 30% 98%;
+  --rose-100: 350 25% 95%;
+  --rose-200: 350 25% 90%;
+  --rose-300: 350 30% 80%;
+  --rose-400: 350 50% 70%;
+  --rose-500: 350 70% 55%;
+  --rose-600: 350 75% 45%;
+  --rose-700: 345 80% 35%;
+  --rose-800: 345 85% 25%;
+  --rose-900: 345 90% 15%;
+  
+  --gold: 45 95% 70%;
+  --gold-dark: 40 85% 55%;
 }
 
 .dark {
-  --background: 222 84% 5%; /* #0D1117 */
-  --foreground: 210 40% 98%; /* #F8FAFC */
-  --muted: 217 33% 17%; /* #1F2937 */
-  --muted-foreground: 215 20% 65%; /* #9CA3AF */
-  --popover: 222 84% 5%; /* #0D1117 */
-  --popover-foreground: 210 40% 98%; /* #F8FAFC */
-  --card: 222 84% 5%; /* #0D1117 */
-  --card-foreground: 210 40% 98%; /* #F8FAFC */
-  --border: 217 33% 17%; /* #1F2937 */
-  --input: 217 33% 17%; /* #1F2937 */
-  --primary: 221 83% 53%; /* #2563EB */
-  --primary-foreground: 210 40% 98%; /* #F8FAFC */
-  --secondary: 217 33% 17%; /* #1F2937 */
-  --secondary-foreground: 210 40% 98%; /* #F8FAFC */
-  --accent: 45 93% 47%; /* #F59E0B */
-  --accent-foreground: 222 84% 5%; /* #0D1117 */
-  --destructive: 0 62% 30%; /* #DC2626 */
-  --destructive-foreground: 210 40% 98%; /* #F8FAFC */
-  --ring: 221 83% 53%; /* #2563EB */
+  /* Romantic Rose Theme - Dark Mode */
+  --background: 345 25% 8%; /* Deep burgundy background */
+  --foreground: 350 20% 95%; /* Light rose text */
+  --muted: 345 10% 15%; /* Very dark rose */
+  --muted-foreground: 350 10% 65%; /* Muted light rose */
+  --popover: 345 20% 12%; /* Dark rose popover */
+  --popover-foreground: 350 20% 95%; /* Light rose text */
+  --card: 345 20% 12%; /* Dark rose cards */
+  --card-foreground: 350 20% 95%; /* Light rose text */
+  --border: 345 15% 20%; /* Dark rose border */
+  --input: 345 15% 18%; /* Dark rose input */
+  --primary: 350 70% 60%; /* Bright rose */
+  --primary-foreground: 345 25% 8%; /* Dark background on rose */
+  --secondary: 345 15% 18%; /* Dark rose secondary */
+  --secondary-foreground: 350 20% 85%; /* Light rose text */
+  --accent: 345 20% 25%; /* Dark romantic accent */
+  --accent-foreground: 350 20% 95%; /* Light rose text */
+  --destructive: 0 75% 55%; /* Rose red */
+  --destructive-foreground: 0 0% 100%; /* White */
+  --ring: 350 70% 60%; /* Bright rose ring */
 }
 
 @layer base {
@@ -68,28 +85,51 @@
 }
 
 @layer components {
+  /* Rose decoration styles */
+  .rose-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 228, 225, 0.1) 0%, transparent 50%);
+  }
+  
+  .romantic-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--rose-100)) 0%, 
+      hsl(var(--rose-200)) 50%, 
+      hsl(var(--rose-300)) 100%);
+  }
+  
+  .gold-accent {
+    color: hsl(var(--gold));
+  }
+  
+  .premium-glow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
   .premium-badge {
-    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-sm;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 text-white shadow-lg;
   }
 
   .verified-badge {
-    @apply inline-flex items-center text-green-500;
+    @apply inline-flex items-center text-emerald-600;
   }
 
   .post-card {
-    @apply bg-card rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow;
+    @apply bg-card rounded-xl shadow-sm border border-border hover:shadow-lg transition-all duration-300 hover:border-primary/30;
   }
 
   .post-card.premium {
-    @apply border-2 border-amber-200;
+    @apply border-2 border-amber-300 shadow-lg;
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors;
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded-lg font-medium hover:bg-secondary/80 transition-colors border border-border;
+    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded-lg font-medium hover:bg-secondary/80 transition-all duration-200 border border-border shadow-sm;
   }
 
   .status-indicator {
@@ -97,11 +137,11 @@
   }
 
   .status-online {
-    @apply bg-green-100 text-green-800;
+    @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200;
   }
 
   .status-away {
-    @apply bg-gray-100 text-gray-800;
+    @apply bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200;
   }
 
   .filter-sidebar {
@@ -118,6 +158,13 @@
 
   .message-received {
     @apply bg-muted text-muted-foreground mr-auto;
+  }
+
+  .logo-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--rose-600)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
