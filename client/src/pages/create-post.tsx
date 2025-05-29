@@ -85,6 +85,28 @@ export default function CreatePost() {
     },
   });
 
+  const createPostMutation = useMutation({
+    mutationFn: async (data: CreatePostFormData & { images: string[] }) => {
+      const response = await apiRequest("POST", "/api/posts", data);
+      return response.json();
+    },
+    onSuccess: (newPost) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/posts"] });
+      toast({
+        title: "Post created successfully!",
+        description: "Your listing is now live and visible to other users.",
+      });
+      navigate("/dashboard");
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Failed to create post",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
   // Redirect if not authenticated
   if (!isAuthenticated) {
     return (
@@ -109,28 +131,6 @@ export default function CreatePost() {
       </div>
     );
   }
-
-  const createPostMutation = useMutation({
-    mutationFn: async (data: CreatePostFormData & { images: string[] }) => {
-      const response = await apiRequest("POST", "/api/posts", data);
-      return response.json();
-    },
-    onSuccess: (newPost) => {
-      queryClient.invalidateQueries({ queryKey: ["/api/posts"] });
-      toast({
-        title: "Post created successfully!",
-        description: "Your listing is now live and visible to other users.",
-      });
-      navigate("/dashboard");
-    },
-    onError: (error: any) => {
-      toast({
-        title: "Failed to create post",
-        description: error.message || "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
@@ -413,8 +413,6 @@ export default function CreatePost() {
                       </div>
                     </div>
 
-                    <Separator />
-
                     {/* Premium Toggle */}
                     <FormField
                       control={form.control}
@@ -429,40 +427,29 @@ export default function CreatePost() {
                           </FormControl>
                           <div className="space-y-1 leading-none">
                             <FormLabel className="flex items-center">
-                              <Crown className="h-4 w-4 text-amber-500 mr-2" />
-                              Premium Listing
+                              <Crown className="h-4 w-4 mr-2 text-amber-500" />
+                              Make this a Premium Post
                             </FormLabel>
                             <FormDescription>
-                              Get highlighted placement, premium badge, and increased visibility.
-                              Premium listings appear first in search results.
+                              Premium posts get priority placement and enhanced visibility
                             </FormDescription>
                           </div>
                         </FormItem>
                       )}
                     />
 
-                    {/* Submit Button */}
-                    <div className="flex gap-4">
-                      <Button
-                        type="submit"
-                        disabled={createPostMutation.isPending}
-                        className="flex-1"
-                      >
-                        {createPostMutation.isPending ? (
-                          <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                        ) : (
-                          <Upload className="h-4 w-4 mr-2" />
-                        )}
-                        Publish Post
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        asChild
-                      >
-                        <Link href="/dashboard">Cancel</Link>
-                      </Button>
-                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={createPostMutation.isPending}
+                    >
+                      {createPostMutation.isPending ? (
+                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      ) : (
+                        <Upload className="h-4 w-4 mr-2" />
+                      )}
+                      Create Post
+                    </Button>
                   </form>
                 </Form>
               </CardContent>
@@ -471,68 +458,41 @@ export default function CreatePost() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="space-y-6">
-              
-              {/* Safety Guidelines */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Shield className="h-5 w-5 text-green-500 mr-2" />
-                    Safety Guidelines
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm">
-                  <p>• Be honest and accurate in your descriptions</p>
-                  <p>• Don't share personal contact information publicly</p>
-                  <p>• Meet in public places for safety</p>
-                  <p>• Report any suspicious or inappropriate behavior</p>
-                  <p>• Follow community guidelines and terms of service</p>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Safety Guidelines</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Alert>
+                  <Shield className="h-4 w-4" />
+                  <AlertDescription>
+                    Your safety is our priority. Always meet in public places and trust your instincts.
+                  </AlertDescription>
+                </Alert>
 
-              {/* Profile Completion */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Profile Completion</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Profile Info</span>
-                    <Badge variant={user?.fullName ? "default" : "secondary"}>
-                      {user?.fullName ? "Complete" : "Incomplete"}
-                    </Badge>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Email Verified</span>
-                    <Badge variant={user?.isVerified ? "default" : "secondary"}>
-                      {user?.isVerified ? "Verified" : "Pending"}
-                    </Badge>
-                  </div>
-                  <p className="text-xs text-gray-500">
-                    Complete your profile to build trust with other users.
-                  </p>
-                  <Button variant="outline" size="sm" asChild className="w-full">
-                    <Link href={`/profile/${user?.id}`}>
-                      Update Profile
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                <div className="space-y-2 text-sm">
+                  <h4 className="font-medium">Before posting:</h4>
+                  <ul className="space-y-1 text-gray-600">
+                    <li>• Use clear, honest descriptions</li>
+                    <li>• Include recent photos</li>
+                    <li>• Verify your location</li>
+                    <li>• Review community guidelines</li>
+                  </ul>
+                </div>
 
-              {/* Tips */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Tips for Success</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm">
-                  <p>• Use clear, recent photos</p>
-                  <p>• Write detailed descriptions</p>
-                  <p>• Respond promptly to messages</p>
-                  <p>• Consider premium for better visibility</p>
-                  <p>• Update your post regularly</p>
-                </CardContent>
-              </Card>
-            </div>
+                <Separator />
+
+                <div className="space-y-2 text-sm">
+                  <h4 className="font-medium">Platform features:</h4>
+                  <ul className="space-y-1 text-gray-600">
+                    <li>• User verification system</li>
+                    <li>• Rating & review system</li>
+                    <li>• Report & block options</li>
+                    <li>• 18+ age verification</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
