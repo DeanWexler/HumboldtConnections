@@ -45,10 +45,10 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-primary">Humboldt Connect</h1>
+              <h1 className="text-2xl font-bold logo-text">Skip2Love Humboldt</h1>
             </Link>
             <div className="hidden md:block ml-6">
-              <span className="text-sm text-muted-foreground">Professional Classified Platform</span>
+              <span className="text-sm text-muted-foreground">💕 Find Love in Humboldt County</span>
             </div>
           </div>
 
@@ -117,6 +117,12 @@ export function Header() {
                     <Link href={`/profile/${user?.id}`} className="flex items-center">
                       <User className="h-4 w-4 mr-2" />
                       View Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile" className="flex items-center">
+                      <User className="h-4 w-4 mr-2" />
+                      Edit Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
